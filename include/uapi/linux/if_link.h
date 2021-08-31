@@ -1248,4 +1248,13 @@ struct ifla_rmnet_flags {
 	__u32	mask;
 };
 
+/* virt_wifi section */
+enum {
+	IFLA_VIRTWIFI_UNSPEC,
+	IFLA_VIRTWIFI_LOWER,
+	__IFLA_VIRTWIFI_MAX,
+};
+
+#define IFLA_VIRTWIFI_MAX (__IFLA_VIRTWIFI_MAX - 1)
+
 #endif /* _LINUX_IF_LINK_H */
