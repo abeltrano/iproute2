@@ -81,7 +81,7 @@ static void virt_wifi_print_help(struct link_util *lu, int argc, char **argv,
 }
 
 struct link_util virt_wifi_link_util = {
-	.id			= "virt_wifi",
+	.id		= "virt_wifi",
 	.maxattr	= IFLA_VIRTWIFI_MAX,
 	.parse_opt	= virt_wifi_parse_opt,
 	.print_opt	= virt_wifi_print_opt,
