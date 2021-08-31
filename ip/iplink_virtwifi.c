@@ -57,7 +57,7 @@ static int virt_wifi_parse_opt(struct link_util *lu, int argc, char **argv,
 		ifindex = ll_name_to_index(lower);
 		if (!ifindex)
 			return nodev(lower);
-		addattr32(n, 1024, IFLA_LINK, ifindex);
+		addattr32(n, 1024, IFLA_VIRTWIFI_LOWER, ifindex);
 	}
 
 	return 0;
@@ -68,8 +68,8 @@ static void virt_wifi_print_opt(struct link_util *lu, FILE *f, struct rtattr *tb
 	if (!tb)
 		return;
 
-	if (tb[IFLA_LINK]) {
-		int iflink = rta_getattr_u32(tb[IFLA_LINK]);
+	if (tb[IFLA_VIRTWIFI_LOWER]) {
+		int iflink = rta_getattr_u32(tb[IFLA_VIRTWIFI_LOWER]);
 		fprintf(f, "link %u: %s\n", iflink, ll_index_to_name(iflink));
 	}
 }
@@ -79,9 +79,6 @@ static void virt_wifi_print_help(struct link_util *lu, int argc, char **argv,
 {
 	print_explain(f);
 }
-
-// TODO: should be defined in kernel if_link.h
-#define IFLA_VIRTWIFI_MAX	1
 
 struct link_util virt_wifi_link_util = {
 	.id			= "virt_wifi",
